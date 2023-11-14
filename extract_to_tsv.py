@@ -2,19 +2,6 @@ import argparse
 import random
 import json
 
-"""Write a script extract_to_tsv.py that accepts one of the files you collected from Reddit and outputs 
-a random selection of posts from that file to a tsv (tab separated value) file.  
-It should function like this:
-
-	python3 extract_to_tsv.py -o <out_file> <json_file> <num_posts_to_output>
-
-If <num_posts_to_output> is greater than the file length, then the script should just output all lines. 
- If there are more than <num_posts_to_output> (which is likely the case), then it should randomly 
- select num_posts_to_output (the parameter you passed to the script) of them and just output those.
-
-
-"""
-#seems like post are not unique , question to ask ta or prof
 def extract_to_tsv(json_file, num_posts_to_output, out_file):
     """Extracts a random selection of posts from a json file and outputs them to a tsv file
 
@@ -44,7 +31,7 @@ def extract_to_tsv(json_file, num_posts_to_output, out_file):
                 post_name = post['data']['name']
                 post_title = post['data']['title']
                 
-                tsv.write(f"{post_name}\t{post_title}\n")
+                tsv.write(f"{post_name}\t{post_title}\t\n")
             except KeyError as e:
                 print(f"Skipping post due to missing key: {e}")
 def main():
